@@ -1,0 +1,25 @@
+{
+  "name": "api-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecmerdler/api-docs.git"
+  },
+  "author": "Alec Merdler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alecmerdler/api-docs/issues"
+  },
+  "homepage": "https://github.com/alecmerdler/api-docs#readme",
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "angular": "^1.6.1"
+  }
+}
