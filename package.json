@@ -2,24 +2,26 @@
   "name": "api-docs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alecmerdler/api-docs.git"
+    "dev": "./node_modules/.bin/run-p watch serve",
+    "test": "test",
+    "build": "./node_modules/.bin/webpack --progress -p -v",
+    "watch": "./node_modules/.bin/webpack --watch",
+    "serve": "http-server"
   },
   "author": "Alec Merdler",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alecmerdler/api-docs/issues"
-  },
-  "homepage": "https://github.com/alecmerdler/api-docs#readme",
   "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.22.0",
+    "npm-run-all": "^4.0.1",
     "webpack": "^1.14.0"
   },
   "dependencies": {
-    "angular": "^1.6.1"
+    "angular": "^1.6.1",
+    "angular-animate": "^1.6.1",
+    "angular-aria": "^1.6.1",
+    "angular-material": "^1.1.1",
+    "angular-ui-router": "^0.4.2"
   }
 }
