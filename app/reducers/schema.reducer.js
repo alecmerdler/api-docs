@@ -19,87 +19,16 @@ export function schemaReducer(state, action) {
                 }
               }
             }
-            }
-            
-            fragment FullType on __Type {
-            kind
-            name
-            description
-            fields(includeDeprecated: true) {
-              name
-              description
-              args {
-                ...InputValue
-              }
-              type {
-                ...TypeRef
-              }
-              isDeprecated
-              deprecationReason
-            }
-            inputFields {
-              ...InputValue
-            }
-            interfaces {
-              ...TypeRef
-            }
-            enumValues(includeDeprecated: true) {
-              name
-              description
-              isDeprecated
-              deprecationReason
-            }
-            possibleTypes {
-              ...TypeRef
-            }
-            }
-            
-            fragment InputValue on __InputValue {
-            name
-            description
-            type { ...TypeRef }
-            defaultValue
-            }
-            
-            fragment TypeRef on __Type {
-            kind
-            name
-            ofType {
-              kind
-              name
-              ofType {
-                kind
-                name
-                ofType {
-                  kind
-                  name
-                  ofType {
-                    kind
-                    name
-                    ofType {
-                      kind
-                      name
-                      ofType {
-                        kind
-                        name
-                        ofType {
-                          kind
-                          name
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
           }
         `
     };
 
     switch (action.type) {
         case "retrieveSchema":
+            console.log(JSON.stringify(graphQLParams));
             asyncAction = fetch('http://localhost:3001/v1.0/foundry', {
                 method: 'post',
+                mode: 'no-cors',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

@@ -5,6 +5,8 @@ export const DocsComponent = {
     },
     template: `
         <md-content class="md-padding">
+            <breadcrumbs></breadcrumbs>
+            
             <md-card>
                 <md-card-title>
                     <md-card-title-text>

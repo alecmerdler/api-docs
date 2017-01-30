@@ -9,6 +9,7 @@ import { SidenavComponent } from './components/common/sidenav/sidenav.component'
 import { DocsComponent } from './components/docs/docs.component';
 import { Store } from './store/store.service';
 import { schemaReducer } from './reducers/schema.reducer';
+import { BreadcrumbsComponent } from './components/common/breadcrumbs/breadcrumbs.component';
 
 
 const appDependencies = [
@@ -23,5 +24,6 @@ export default angular
     .component("navbar", NavbarComponent)
     .component("sidenav", SidenavComponent)
     .component("docs", DocsComponent)
+    .component("breadcrumbs", BreadcrumbsComponent)
     .factory("store", () => new Store([schemaReducer]))
     .name;
