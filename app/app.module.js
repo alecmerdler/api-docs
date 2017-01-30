@@ -6,6 +6,7 @@ import ngMaterial from 'angular-material';
 import "angular-material/angular-material.min.css"
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { SidenavComponent } from './components/common/sidenav/sidenav.component';
+import { DocsComponent } from './components/docs/docs.component';
 
 
 const appDependencies = [
@@ -19,4 +20,5 @@ export default angular
     .component("app", AppComponent)
     .component("navbar", NavbarComponent)
     .component("sidenav", SidenavComponent)
+    .component("docs", DocsComponent)
     .name;

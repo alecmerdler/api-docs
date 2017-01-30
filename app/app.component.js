@@ -27,11 +27,12 @@ export const AppComponent = {
 };
 
 AppComponentController.$inject = [
-
+    "$state"
 ];
-export function AppComponentController() {
+export function AppComponentController($state) {
     this.greeting = "Hello World!";
     this.activeView = "home";
+    // TODO: Move to store and retrieve using HTTP
     this.references = [
         {
             name: "Campaign",
@@ -56,6 +57,6 @@ export function AppComponentController() {
     };
 
     this.onReferenceSelect = (reference) => {
-        console.log(reference);
+
     };
 }

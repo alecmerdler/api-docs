@@ -4,7 +4,10 @@ sidenav ul li {
 }
 
 sidenav ul li:hover {
-    transform: translate(5px, 0);
     text-decoration: underline;
     cursor: pointer;
+}
+
+.active {
+    text-decoration: underline;
 }
