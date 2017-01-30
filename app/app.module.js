@@ -5,6 +5,7 @@ import uirouter from 'angular-ui-router';
 import ngMaterial from 'angular-material';
 import "angular-material/angular-material.min.css"
 import { NavbarComponent } from './components/common/navbar/navbar.component';
+import { SidenavComponent } from './components/common/sidenav/sidenav.component';
 
 
 const appDependencies = [
@@ -17,4 +18,5 @@ export default angular
     .config(appConfig)
     .component("app", AppComponent)
     .component("navbar", NavbarComponent)
+    .component("sidenav", SidenavComponent)
     .name;

@@ -1,0 +1,10 @@
+sidenav ul li {
+    padding: 2px 0;
+    transition: all 0.5s;
+}
+
+sidenav ul li:hover {
+    transform: translate(5px, 0);
+    text-decoration: underline;
+    cursor: pointer;
+}
