@@ -15,7 +15,7 @@ export const NavbarComponent = {
             <div style="display: flex; flex: 6;">
                 <md-nav-item
                     name="home"
-                    md-nav-click="$ctrl.onTabSelect({newValue: 'home'})">
+                    md-nav-click="$ctrl.onTabSelect({newValue: 'docs'})">
                     Docs
                 </md-nav-item>
                 <md-nav-item

@@ -54,9 +54,10 @@ export function AppComponentController($state) {
 
     this.onViewChange = (newValue) => {
         this.activeView = newValue;
+        $state.go(newValue);
     };
 
     this.onReferenceSelect = (reference) => {
-
+        // TODO: Update store
     };
 }

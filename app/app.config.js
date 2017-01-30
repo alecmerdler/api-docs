@@ -12,5 +12,7 @@ export function appConfig(
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-        .state('docs', {url: '/', template: '<docs></docs>'});
+        .state('docs', {url: '/', template: '<docs></docs>'})
+        .state('forge', {url: '/forge', template: ''})
+        .state('tools', {url: '/tools', template: ''});
 }
