@@ -31,7 +31,7 @@ AppComponentController.$inject = [
 ];
 export function AppComponentController($state) {
     this.greeting = "Hello World!";
-    this.activeView = "home";
+    this.activeView = "docs";
     // TODO: Move to store and retrieve using HTTP
     this.references = [
         {

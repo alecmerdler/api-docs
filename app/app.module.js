@@ -7,6 +7,8 @@ import "angular-material/angular-material.min.css"
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { SidenavComponent } from './components/common/sidenav/sidenav.component';
 import { DocsComponent } from './components/docs/docs.component';
+import { Store } from './store/store.service';
+import { schemaReducer } from './reducers/schema.reducer';
 
 
 const appDependencies = [
@@ -21,4 +23,5 @@ export default angular
     .component("navbar", NavbarComponent)
     .component("sidenav", SidenavComponent)
     .component("docs", DocsComponent)
+    .factory("store", () => new Store([schemaReducer]))
     .name;

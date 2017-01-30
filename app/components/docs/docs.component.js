@@ -20,15 +20,18 @@ export const DocsComponent = {
 };
 
 DocsComponentController.$inject = [
-
+    "store",
 ];
-export function DocsComponentController() {
+export function DocsComponentController(store) {
     this.reference = {
         name: "Campaigns",
     };
 
     this.$onInit = () => {
-
+        store.subscribe((state) => {
+            console.log(state);
+        });
+        store.dispatch({type: "retrieveSchema"});
     };
 
     this.$onChanges = (changedProps) => {
