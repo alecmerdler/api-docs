@@ -4,19 +4,21 @@ export const AppComponent = {
 
     },
     template: `
+        <navbar></navbar>
+        
         <span ng-bind="$ctrl.greeting"></span>
         
         <ui-view></ui-view>
     `
 };
-export class AppComponentController {
 
-    constructor() {
-        this.$inject = [];
-        this.greeting = "Hello World";
-    }
+AppComponentController.$inject = [
 
-    $onInit() {
+];
+export function AppComponentController() {
+    this.greeting = "Hello World!";
+
+    this.$onInit = () => {
         console.log(this.greeting);
     }
 }

@@ -11,6 +11,6 @@ export function appConfig(
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider
-        .state('root', {url: '/', component: 'app'});
+    // $stateProvider
+    //     .state('root', {url: '/', component: 'app'});
 }
