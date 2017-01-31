@@ -6,7 +6,7 @@ var config = {
         filename: "build/bundle.js"
     },
     resolve: {
-        extensions: ["", ".js"],
+        extensions: ["", ".js", ".ts", ".css", ".scss"],
     },
     module: {
         loaders: [
@@ -17,6 +17,11 @@ var config = {
                 query: {
                     presets: ['es2015']
                 }
+            },
+            {
+                test: /\.ts$/,
+                loader: "ts-loader",
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
