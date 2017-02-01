@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 var config = {
-    entry: "./app/app.module.js",
+    entry: "./app/main.ts",
     output: {
         filename: "build/bundle.js"
     },
@@ -11,14 +11,6 @@ var config = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
-                loader: "babel-loader",
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
                 test: /\.ts$/,
                 loader: "ts-loader",
                 exclude: /node_modules/
@@ -26,10 +18,18 @@ var config = {
             {
                 test: /\.css$/,
                 loaders: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.svg$/,
+                loader: "svg-url-loader"
+            },
+            {
+                test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
+                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
             }
         ]
     },
-    devtool: "source-map",
+    devtool: "cheap-eval-source-map",
 };
 
 module.exports = config;
