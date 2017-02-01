@@ -9,19 +9,20 @@ import { Router } from '@angular/router';
     ],
     template: `
         <div style="display: flex; flex-direction: column;">
-            <!-- TODO: Navbar -->
+            <navbar></navbar>
             
-            <div style="display: flex;">
-                <div style="flex: 1; height: 100%;">
-                    <sidenav 
-                        [references]="references">
-                    </sidenav>
-                </div>
+            <md-sidenav-container>
+                <sidenav 
+                    [references]="references">
+                </sidenav>
                 
-                <div style="flex: 4;">
-                    <!-- TODO: Router outlet -->
+                
+                <div style="display: flex;">
+                    <div style="flex: 4;">
+                        <!-- TODO: Router outlet -->
+                    </div>
                 </div>
-            </div>
+            </md-sidenav-container>
         </div>
     `
 })

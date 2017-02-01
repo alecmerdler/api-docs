@@ -6,7 +6,7 @@
     "dev": "./node_modules/.bin/run-p watch serve",
     "test": "test",
     "build": "./node_modules/.bin/webpack --progress -p -v",
-    "watch": "./node_modules/.bin/webpack --watch",
+    "watch": "./node_modules/.bin/webpack --watch -p -v",
     "serve": "http-server"
   },
   "author": "Alec Merdler",
@@ -39,7 +39,7 @@
     "@angular/core": "^2.4.4",
     "@angular/forms": "^2.4.4",
     "@angular/http": "^2.4.4",
-    "@angular/material": "^2.0.0-alpha.11-3",
+    "@angular/material": "^2.0.0-beta.1",
     "@angular/platform-browser": "^2.4.4",
     "@angular/platform-browser-dynamic": "^2.4.4",
     "@angular/router": "^3.4.4",

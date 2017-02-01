@@ -1,5 +1,4 @@
 import { Component, OnInit, Inject, Input, Output } from '@angular/core';
-import { TreeNode } from 'primeng/primeng';
 
 
 @Component({
@@ -8,9 +7,11 @@ import { TreeNode } from 'primeng/primeng';
 
     ],
     template: `
-        <div style="display: flex; flex-direction: column; justify-content: flex-start;">
-            <h1 style="background: purple;">Testing</h1>
-        </div>
+        <md-sidenav #sidenav
+            mode="side"
+            opened="true">
+            <h1>Sidenav</h1>
+        </md-sidenav>
     `
 })
 export class SidenavComponent implements OnInit {
