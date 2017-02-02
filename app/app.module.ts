@@ -16,10 +16,7 @@ import "hammerjs";
 
 
 const routes = [
-    {
-        path: '',
-        component: DocsComponent
-    },
+    { path: '', component: DocsComponent },
 ];
 
 @NgModule({
