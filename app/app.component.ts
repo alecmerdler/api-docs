@@ -1,34 +1,33 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { SchemaService } from './services/schema/schema.service';
 
 
 @Component({
     selector: 'app',
-    styles: [
-
-    ],
+    styles: [`
+       
+    `],
     template: `
         <div style="display: flex; flex-direction: column;">
             <navbar></navbar>
             
-            <md-sidenav-container>
-                <sidenav 
-                    [references]="references">
-                </sidenav>
-                
-                
-                <div style="display: flex;">
-                    <div style="flex: 4;">
-                        <!-- TODO: Router outlet -->
-                    </div>
+            <div style="display: flex;">
+                <div style="flex: 1;">
+                    <sidenav 
+                        [references]="references">
+                    </sidenav>
                 </div>
-            </md-sidenav-container>
+                
+                <div style="flex: 4;">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
         </div>
     `
 })
 export class AppComponent implements OnInit {
 
-    private greeting: string = "Hello World!";
     private references: any[] = [
         {
             name: "Campaign",
@@ -44,7 +43,15 @@ export class AppComponent implements OnInit {
         },
     ];
 
-    public ngOnInit(): void {
+    constructor(@Inject(Router) private router: Router,
+                @Inject(SchemaService) private schemaService: SchemaService) {
 
+    }
+
+    public ngOnInit(): void {
+        this.schemaService.retrieveSchema()
+            .subscribe((schema: any) => {
+                console.log(schema);
+            });
     }
 }
