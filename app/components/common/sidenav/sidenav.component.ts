@@ -1,28 +1,48 @@
-import { Component, OnInit, Inject, Input, Output } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
     selector: 'sidenav',
-    styles: [
-
-    ],
+    styles: [`
+        md-list-item {
+            cursor: pointer;
+        }
+        .reference-item:hover {
+            background: grey;
+        }
+        .list-root {
+            
+        }
+    `],
     template: `
-        <md-card style="height: 100%;">
-            <md-card-title>
-                <h3>Sidenav</h3>
-            </md-card-title>
+        <md-card style="padding: 0;">
             <md-card-content>
-                <span style="display: flex; flex-direction: column;"
-                    *ngFor="let reference of references">
-                    <a>{{ reference.name }}</a>
-                </span>
+                <md-list>
+                    <md-list-item 
+                        class="list-root"
+                        (click)="onToggleShowObjects()">
+                        Objects
+                    </md-list-item>
+                    <div *ngIf="showObjects">
+                        <md-list-item 
+                            class="reference-item"
+                            *ngFor="let object of schemaViewModel.objects">
+                            <span (click)="setActiveObject(object)">
+                                {{ object.name }}
+                            </span>
+                        </md-list-item>
+                    </div>
+                </md-list>
             </md-card-content>
         </md-card>
     `
 })
 export class SidenavComponent implements OnInit {
 
-    @Input() references: any[];
+    @Input() schemaViewModel: any;
+    @Output() objectSelected: EventEmitter<any> = new EventEmitter();
+    private showObjects: boolean = false;
+    private activeObject: string;
 
     constructor() {
 
@@ -30,5 +50,14 @@ export class SidenavComponent implements OnInit {
 
     public ngOnInit(): void {
 
+    }
+
+    public onToggleShowObjects(): void {
+        this.showObjects = !this.showObjects;
+    }
+
+    public setActiveObject(object: any): void {
+        this.activeObject = object.name;
+        this.objectSelected.emit(object);
     }
 }

@@ -19,6 +19,7 @@ const routes = [
     { path: '', component: DocsComponent },
 ];
 
+
 @NgModule({
     imports: [
         BrowserModule,

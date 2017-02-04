@@ -1,9 +1,9 @@
 var webpack = require('webpack');
 
 var config = {
-    entry: "./app/main.ts",
+    entry: "./shape_modules/api-docs/app/main.ts",
     output: {
-        filename: "build/bundle.js"
+        filename: "./shape_modules/api-docs/build/bundle.js"
     },
     resolve: {
         extensions: ["", ".js", ".ts", ".css", ".scss"],
@@ -20,12 +20,8 @@ var config = {
                 loaders: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.svg$/,
-                loader: "svg-url-loader"
-            },
-            {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg|gif)$/,
-                loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+                loader: 'url-loader?limit=30000&name=./shape_modules/api-docs/build/[name]-[hash].[ext]'
             }
         ]
     },

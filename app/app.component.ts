@@ -6,20 +6,70 @@ import { SchemaService } from './services/schema/schema.service';
 @Component({
     selector: 'app',
     styles: [`
-       
+       :host >>> .flex {
+            display: flex;
+        }
+        :host >>> .flex-column {
+            flex-direction: column;
+        }
+        :host >>> .flex-center {
+            justify-content: center;
+        }
+        :host >>> .flex-start {
+            justify-content: flex-start;
+        }
+        :host >>> .flex-end {
+            justify-content: flex-end;
+        }
+        :host >>> .flex-space-around {
+            justify-content: space-around;
+        }
+        :host >>> .flex-align-center {
+            align-items: center;
+        }
+        :host >>> .flex-1 {
+            flex: 1;
+        }
+        :host >>> .flex-2 {
+            flex: 2;
+        }
+        :host >>> .flex-3 {
+            flex: 3;
+        }
+        :host >>> .flex-4 {
+            flex: 4;
+        }
+        :host >>> .flex-5 {
+            flex: 5;
+        }
+        :host >>> .flex-6 {
+            flex: 6;
+        }
+        :host >>> .flex-7 {
+            flex: 7;
+        }
+        :host >>> .flex-8 {
+            flex: 8;
+        }
+        :host >>> .flex-9 {
+            flex: 9;
+        }
+        :host >>> .flex-10 {
+            flex: 10;
+        }
     `],
     template: `
-        <div style="display: flex; flex-direction: column;">
+        <div class="flex flex-column">
             <navbar></navbar>
             
-            <div style="display: flex;">
-                <div style="flex: 1;">
+            <div class="flex">
+                <div class="flex-1">
                     <sidenav 
-                        [references]="references">
+                        [schemaViewModel]="schemaViewModel">
                     </sidenav>
                 </div>
                 
-                <div style="flex: 4;">
+                <div class="flex-4">
                     <router-outlet></router-outlet>
                 </div>
             </div>
@@ -28,20 +78,7 @@ import { SchemaService } from './services/schema/schema.service';
 })
 export class AppComponent implements OnInit {
 
-    private references: any[] = [
-        {
-            name: "Campaign",
-        },
-        {
-            name: "Company",
-        },
-        {
-            name: "Device"
-        },
-        {
-            name: "Budget"
-        },
-    ];
+    private schemaViewModel: any;
 
     constructor(@Inject(Router) private router: Router,
                 @Inject(SchemaService) private schemaService: SchemaService) {
@@ -50,8 +87,8 @@ export class AppComponent implements OnInit {
 
     public ngOnInit(): void {
         this.schemaService.retrieveSchema()
-            .subscribe((schema: any) => {
-                console.log(schema);
+            .subscribe((schemaViewModel: any) => {
+                this.schemaViewModel = schemaViewModel;
             });
     }
 }
