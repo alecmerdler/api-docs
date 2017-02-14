@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { SchemaService } from './services/schema/schema.service';
 
 
@@ -65,7 +65,8 @@ import { SchemaService } from './services/schema/schema.service';
             <div class="flex">
                 <div class="flex-1">
                     <sidenav 
-                        [schemaViewModel]="schemaViewModel">
+                        [schemaViewModel]="schemaViewModel"
+                        (objectSelected)="onReferenceSelect($event)">
                     </sidenav>
                 </div>
                 
@@ -79,9 +80,11 @@ import { SchemaService } from './services/schema/schema.service';
 export class AppComponent implements OnInit {
 
     private schemaViewModel: any;
+    private activeReference: any;
 
     constructor(@Inject(Router) private router: Router,
-                @Inject(SchemaService) private schemaService: SchemaService) {
+                @Inject(SchemaService) private schemaService: SchemaService,
+                @Inject(ActivatedRoute) private route: ActivatedRoute) {
 
     }
 
@@ -90,5 +93,13 @@ export class AppComponent implements OnInit {
             .subscribe((schemaViewModel: any) => {
                 this.schemaViewModel = schemaViewModel;
             });
+        this.route.params.subscribe((params: Params) => {
+            console.log(params);
+        });
+    }
+
+    public onReferenceSelect($event: any): void {
+        this.router.navigate([`./${$event.data.name}`])
+        this.schemaService.activeReference().next($event.data);
     }
 }

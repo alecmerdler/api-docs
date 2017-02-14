@@ -16,7 +16,9 @@ import "hammerjs";
 
 
 const routes = [
-    { path: '', component: DocsComponent },
+    { path: '', redirectTo: 'latest', pathMatch: 'full' },
+    { path: 'latest', component: DocsComponent },
+    { path: 'latest/:reference', component: DocsComponent },
 ];
 
 

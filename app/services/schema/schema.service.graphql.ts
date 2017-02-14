@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { SchemaService } from './schema.service';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
@@ -88,6 +89,7 @@ export class SchemaServiceGraphQL implements SchemaService {
                 }
             }
         }`;
+    private activeReferenceSubject: Subject<any> = new Subject();
 
     constructor(private http: Http) {
         this.requestOptions = new RequestOptions({
@@ -98,8 +100,8 @@ export class SchemaServiceGraphQL implements SchemaService {
         });
     }
 
-    public retrieveSchema(): Observable<any> {
-        return this.http.post(`http://localhost:3001/v1.0/foundry`, {query: this.query}, this.requestOptions)
+    public retrieveSchema(version: string = "1.0"): Observable<any> {
+        return this.http.post(`http://localhost:3001/v${version}/foundry`, { query: this.query }, this.requestOptions)
             .map((response: Response) => {
                 return this.formatSchemaViewModel(response.json());
             })
@@ -116,6 +118,10 @@ export class SchemaServiceGraphQL implements SchemaService {
 
                 return Observable.throw(errMsg);
             });
+    }
+
+    public activeReference(): Subject<any> {
+        return this.activeReferenceSubject;
     }
 
     private formatSchemaViewModel(schema: any): any {

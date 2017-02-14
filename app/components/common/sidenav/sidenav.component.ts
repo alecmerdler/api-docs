@@ -26,8 +26,9 @@ import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular
                     <div *ngIf="showObjects">
                         <md-list-item 
                             class="reference-item"
-                            *ngFor="let object of schemaViewModel.objects">
-                            <span (click)="setActiveObject(object)">
+                            *ngFor="let object of schemaViewModel.objects"
+                            (click)="setActiveObject(object)">
+                            <span>
                                 {{ object.name }}
                             </span>
                         </md-list-item>
@@ -42,7 +43,7 @@ export class SidenavComponent implements OnInit {
     @Input() schemaViewModel: any;
     @Output() objectSelected: EventEmitter<any> = new EventEmitter();
     private showObjects: boolean = false;
-    private activeObject: string;
+    private activeReference: string;
 
     constructor() {
 
@@ -57,7 +58,7 @@ export class SidenavComponent implements OnInit {
     }
 
     public setActiveObject(object: any): void {
-        this.activeObject = object.name;
-        this.objectSelected.emit(object);
+        this.activeReference = object.name;
+        this.objectSelected.emit({ data: object });
     }
 }
