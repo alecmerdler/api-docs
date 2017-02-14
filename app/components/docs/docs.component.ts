@@ -29,8 +29,7 @@ export class DocsComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.schamaService.activeReference().subscribe((newReference) => {
-            console.log(newReference);
+        this.schamaService.activeReference().subscribe((newReference: any) => {
             this.activeReference = newReference;
         });
     }

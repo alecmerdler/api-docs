@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { SchemaService } from './services/schema/schema.service';
 
 
@@ -79,6 +79,7 @@ import { SchemaService } from './services/schema/schema.service';
 })
 export class AppComponent implements OnInit {
 
+    private apiVersion: string = "1.0";
     private schemaViewModel: any;
     private activeReference: any;
 
@@ -89,17 +90,19 @@ export class AppComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.schemaService.retrieveSchema()
+        this.schemaService.retrieveSchema(this.apiVersion)
             .subscribe((schemaViewModel: any) => {
                 this.schemaViewModel = schemaViewModel;
             });
-        this.route.params.subscribe((params: Params) => {
-            console.log(params);
-        });
+        this.router.events
+            // .filter(keep => event instanceof NavigationEnd)
+            .subscribe((event) => {
+                console.log(event);
+            });
     }
 
     public onReferenceSelect($event: any): void {
-        this.router.navigate([`./${$event.data.name}`])
+        this.router.navigate([`/v${this.apiVersion}/${$event.data.name}`])
         this.schemaService.activeReference().next($event.data);
     }
 }
