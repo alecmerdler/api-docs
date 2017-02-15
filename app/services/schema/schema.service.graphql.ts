@@ -90,6 +90,7 @@ export class SchemaServiceGraphQL implements SchemaService {
             }
         }`;
     private activeReferenceSubject: Subject<any> = new Subject();
+    private activeReferenceNameSubject: Subject<string> = new Subject();
 
     constructor(private http: Http) {
         this.requestOptions = new RequestOptions({

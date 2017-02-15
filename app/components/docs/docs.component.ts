@@ -1,5 +1,10 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Inject } from '@angular/core';
 import { SchemaService } from '../../services/schema/schema.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/from';
 
 
 @Component({
@@ -20,17 +25,30 @@ import { SchemaService } from '../../services/schema/schema.service';
         </md-card>
     `
 })
-export class DocsComponent implements OnInit {
+export class DocsComponent implements OnInit, OnChanges {
 
-    @Input() private activeReference: any;
+    private activeReference: any;
 
-    constructor(@Inject(SchemaService) private schamaService: SchemaService) {
+    constructor(@Inject(SchemaService) private schemaService: SchemaService,
+                @Inject(ActivatedRoute) private route: ActivatedRoute) {
 
     }
 
     public ngOnInit(): void {
-        this.schamaService.activeReference().subscribe((newReference: any) => {
-            this.activeReference = newReference;
-        });
+        this.route.params
+            .filter(params => params['reference'] !== undefined)
+            .subscribe((params: Params) => {
+                console.log(params);
+                this.schemaService.retrieveSchema("1.0")
+                    .switchMap(schemaViewModel => Observable.from(schemaViewModel.objects))
+                    .filter((object: any) => object.name === params['reference'])
+                    .subscribe((object) => {
+                        this.activeReference = object;
+                    });
+            });
+    }
+
+    public ngOnChanges(): void {
+
     }
 }
