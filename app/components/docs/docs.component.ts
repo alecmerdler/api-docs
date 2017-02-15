@@ -38,7 +38,6 @@ export class DocsComponent implements OnInit, OnChanges {
         this.route.params
             .filter(params => params['reference'] !== undefined)
             .subscribe((params: Params) => {
-                console.log(params);
                 this.schemaService.retrieveSchema("1.0")
                     .switchMap(schemaViewModel => Observable.from(schemaViewModel.objects))
                     .filter((object: any) => object.name === params['reference'])
