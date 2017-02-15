@@ -9,13 +9,14 @@ import { DocsComponent } from './components/docs/docs.component';
 import { MaterialModule, OVERLAY_PROVIDERS, InteractivityChecker, MdPlatform } from '@angular/material';
 import { SchemaService } from './services/schema/schema.service';
 import { SchemaServiceGraphQL } from './services/schema/schema.service.graphql';
+import { DataTableModule, SharedModule } from 'primeng/primeng';
 import "primeng/resources/themes/omega/theme.css";
 import "primeng/resources/primeng.min.css";
 import "@angular/material/core/theming/prebuilt/deeppurple-amber.css";
 import "hammerjs";
 
 
-const routes = [
+const routes: Routes = [
     { path: '', redirectTo: 'latest', pathMatch: 'full' },
     { path: ':version', component: DocsComponent },
     { path: ':version/:reference', component: DocsComponent },
@@ -27,6 +28,8 @@ const routes = [
         BrowserModule,
         HttpModule,
         MaterialModule,
+        DataTableModule,
+        SharedModule,
         RouterModule.forRoot(routes),
     ],
     providers: [
