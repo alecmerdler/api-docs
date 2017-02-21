@@ -104,6 +104,7 @@ export class SchemaServiceGraphQL implements SchemaService {
     public retrieveSchema(version: string = "1.0"): Observable<any> {
         return this.http.post(`http://localhost:3001/v${version}/foundry`, { query: this.query }, this.requestOptions)
             .map((response: Response) => {
+                console.log(response.json());
                 return this.formatSchemaViewModel(response.json());
             })
             .catch((error: Response | any) => {

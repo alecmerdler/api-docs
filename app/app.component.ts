@@ -6,7 +6,13 @@ import { SchemaService } from './services/schema/schema.service';
 @Component({
     selector: 'app',
     styles: [`
-       :host >>> .flex {
+        :host >>> .full-height {
+            height: 100%;
+        }
+        :host >>> .full-width {
+            width: 100%;
+        }
+        :host >>> .flex {
             display: flex;
         }
         :host >>> .flex-column {
